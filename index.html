@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>20/11 – Người Gieo Mầm Xanh | Khoa Công nghệ thông tin – TDTU</title>
+  <meta name="description" content="Website tri ân các thầy cô giảng viên Khoa Công nghệ thông tin, Trường Đại học Tôn Đức Thắng nhân ngày Nhà giáo Việt Nam 20/11." />
+  <meta name="theme-color" content="#071426" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:title" content="20/11 – Người Gieo Mầm Xanh | Khoa Công nghệ thông tin – TDTU" />
+  <meta property="og:description" content="Website tri ân các thầy cô giảng viên Khoa Công nghệ thông tin, Trường Đại học Tôn Đức Thắng nhân ngày Nhà giáo Việt Nam 20/11." />
+  <meta property="og:image" content="./og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="./og.jpg" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Dancing+Script:wght@600;700&family=JetBrains+Mono:wght@400&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Dancing+Script:wght@600;700&family=JetBrains+Mono:wght@400&display=swap" />
+  <noscript><style>#opening{display:none!important}body.is-intro{overflow:auto!important}#fallback{display:block!important}.transport,.stage,.topbar{display:none!important}body{overflow:auto!important}</style></noscript>
+  <script>
+    // Lưới an toàn: nếu app JS không chạy được, không để overlay mở đầu chặn nội dung.
+    setTimeout(function () { if (!window.__app) { document.body.classList.remove('is-intro'); var o = document.getElementById('opening'); if (o) o.remove(); } }, 8000);
+  </script>
+  <script type="module" crossorigin src="./assets/index-B1GnbvTW.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/gsap-BFpFlt3B.js">
+  <link rel="modulepreload" crossorigin href="./assets/three-BDZGNo5G.js">
+  <link rel="stylesheet" crossorigin href="./assets/index-B6QBX7HZ.css">
+</head>
+<body class="is-intro">
+  <a class="skip-link" href="#hero">Bỏ qua đến nội dung chính</a>
+
+  <!-- Nền WebGL (một renderer duy nhất) + fallback tĩnh -->
+  <div class="static-bg" aria-hidden="true"></div>
+  <canvas id="garden-canvas" aria-hidden="true"></canvas>
+  <div class="final-burst" aria-hidden="true"></div>
+
+  <!-- ================= SECTION 01 – OPENING ================= -->
+  <div id="opening" role="dialog" aria-labelledby="opening-title" aria-modal="true">
+    <div class="brand brand--lg opening__brand" data-brand></div>
+    <div class="opening__inner">
+      <p class="eyebrow opening__eyebrow" id="opening-title">Tôn vinh những người gieo mầm tri thức</p>
+      <p class="opening__date" aria-label="Ngày hai mươi tháng mười một">20<span>.</span>11</p>
+      <p class="opening__en">Happy Vietnamese Teachers' Day</p>
+      <p class="opening__school">
+        <strong>Khoa Công nghệ thông tin</strong>
+        <span>Trường Đại học Tôn Đức Thắng</span>
+      </p>
+      <button type="button" class="btn btn--primary opening__start" id="start-journey">
+        <i data-lucide="sprout" aria-hidden="true"></i><span>Bắt đầu hành trình tri ân</span>
+      </button>
+    </div>
+    <button type="button" class="btn btn--ghost opening__skip" id="skip-intro">Bỏ qua phần mở đầu</button>
+  </div>
+
+  <!-- ================= STAGE (toàn màn hình, tự động) ================= -->
+  <header class="topbar" id="topbar">
+    <div class="brand" data-brand></div>
+    <div class="topbar__tools">
+      <button type="button" class="icon-btn" id="list-btn" aria-label="Danh sách giảng viên" aria-expanded="false" aria-controls="list-panel" title="Tìm thầy cô / xem tất cả (L)">
+        <i data-lucide="users" aria-hidden="true"></i><span class="icon-btn__label">Giảng viên</span>
+      </button>
+      <button type="button" class="icon-btn icon-btn--round" id="help-btn" aria-label="Điều khiển và phím tắt" aria-expanded="false" aria-controls="help-panel" title="Điều khiển & phím tắt (H)"><i data-lucide="keyboard" aria-hidden="true"></i></button>
+      <button type="button" class="icon-btn icon-btn--round" id="share-btn" aria-label="Chia sẻ website" title="Chia sẻ"><i data-lucide="share-2" aria-hidden="true"></i></button>
+      <button type="button" class="icon-btn icon-btn--round" id="music-btn" aria-label="Tắt nhạc" title="Bật/tắt nhạc (M)"><i data-lucide="volume-2" aria-hidden="true"></i></button>
+    </div>
+  </header>
+
+  <main id="main" class="stage" aria-label="Trình diễn tự động">
+    <div class="stage-text" id="stage-text" aria-live="polite">
+      <p class="eyebrow" data-st="eyebrow"></p>
+      <h1 class="stage-title" data-st="title"></h1>
+      <p class="stage-sub" data-st="sub"></p>
+      <blockquote class="stage-quote" data-st="quote"></blockquote>
+      <p class="stage-extra" data-st="extra"></p>
+      <p class="stage-extra stage-extra--wish" data-st="wish"></p>
+      <p class="stage-greet" data-st="greet"></p>
+    </div>
+
+    <div class="caption" id="caption" hidden>
+      <p class="caption__title" id="cap-title"></p>
+      <h2 class="caption__name" id="cap-name"></h2>
+      <p class="caption__dept" id="cap-dept"></p>
+      <p class="caption__msg" id="cap-msg"></p>
+    </div>
+  </main>
+
+  
+
+  <aside class="list-panel" id="list-panel" hidden aria-label="Danh sách giảng viên">
+    <div class="list-panel__head">
+      <h2>Những người gieo mầm tri thức</h2>
+      <button type="button" class="icon-btn icon-btn--round" id="list-close" aria-label="Đóng danh sách"><i data-lucide="x" aria-hidden="true"></i></button>
+    </div>
+    <div class="list-search"><i data-lucide="search" aria-hidden="true"></i><input type="search" id="list-search" placeholder="Tìm thầy cô theo tên hoặc bộ môn…" aria-label="Tìm thầy cô" autocomplete="off" /></div>
+    <div class="list-grid" id="list-grid"></div>
+  </aside>
+
+  <!-- Phiên bản HTML/CSS (không WebGL / chế độ Tối giản / không JS) -->
+  <section class="fallback" id="fallback" aria-labelledby="fb-title">
+    <div class="container">
+      <div class="brand brand--lg" data-brand></div>
+      <p class="eyebrow">20.11 · Khoa Công nghệ thông tin – TDTU</p>
+      <h1 class="fallback__title" id="fb-title">SOWERS OF GREEN SEEDS<br /><span>Người gieo mầm xanh</span></h1>
+      <p class="fallback__quote">“Thầy cô không chỉ trao truyền kiến thức, mà còn gieo vào mỗi thế hệ sinh viên những ước mơ, khát vọng và niềm tin vào tương lai.”</p>
+      <h2 class="h2">Những người gieo mầm tri thức</h2>
+      <p class="section__sub">Những người đã và đang đồng hành trên hành trình chinh phục tri thức của các thế hệ sinh viên.</p>
+      <div class="lecturer-grid" id="fb-lecturers"></div>
+      <h2 class="h2">Những lời tri ân gửi đến thầy cô</h2>
+      <div class="message-grid" id="fb-messages"></div>
+      <p class="messages__note" id="messages-note" hidden>Một số lời chúc là nội dung biên tập minh họa, không thuộc về một cá nhân cụ thể.</p>
+      <div class="fallback__thanks">
+        <h2>CLB ICON tri ân thầy cô</h2>
+        <p>Cảm ơn những người đã âm thầm gieo mầm tri thức, nuôi dưỡng ước mơ và chắp cánh cho những thế hệ sinh viên.</p>
+        <p>Chúc các thầy cô luôn mạnh khỏe, hạnh phúc và tiếp tục lan tỏa ngọn lửa tri thức.</p>
+        <p class="final__greet">Chúc mừng ngày Nhà giáo Việt Nam – 20/11</p>
+        <p class="fallback__school"><strong>Khoa Công nghệ thông tin</strong><br />Trường Đại học Tôn Đức Thắng</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bảng điều khiển & phím tắt (ẩn mặc định để trải nghiệm giống video 3D) -->
+  <aside class="help-panel" id="help-panel" hidden aria-label="Điều khiển và phím tắt">
+    <div class="list-panel__head"><h2>Điều khiển</h2><button type="button" class="icon-btn icon-btn--round" id="help-close" aria-label="Đóng"><i data-lucide="x" aria-hidden="true"></i></button></div>
+    <div class="help-body">
+      <div class="help-row"><button type="button" class="btn btn--ghost" id="help-pause"><i data-lucide="pause" aria-hidden="true"></i><span>Tạm dừng</span></button><button type="button" class="btn btn--ghost" id="help-replay"><i data-lucide="rotate-ccw" aria-hidden="true"></i><span>Xem lại từ đầu</span></button></div>
+      <h3>Chuyển cảnh</h3>
+      <ol class="help-scenes" id="help-scenes"></ol>
+      <h3>Phím tắt</h3>
+      <dl class="help-keys">
+        <dt>Space</dt><dd>Tạm dừng / tiếp tục</dd>
+        <dt>← →</dt><dd>Cảnh trước / sau (trong hộp xem ảnh: thầy cô trước / sau)</dd>
+        <dt>Enter</dt><dd>Xem chi tiết ảnh đang được chiếu</dd>
+        <dt>E</dt><dd>Khám phá tự do</dd>
+        <dt>R</dt><dd>Xem lại từ đầu</dd>
+        <dt>L</dt><dd>Tìm thầy cô / xem tất cả</dd>
+        <dt>M</dt><dd>Bật / tắt nhạc</dd>
+        <dt>F</dt><dd>Toàn màn hình</dd>
+        <dt>H</dt><dd>Bảng này</dd>
+      </dl>
+      <p class="help-note">Kéo chuột / vuốt để nhìn quanh khi đang chiếu · cuộn hoặc chụm để thu phóng · chạm vào khoảng trống để tạm dừng · chạm vào ảnh để xem.</p>
+    </div>
+  </aside>
+
+  <!-- Modal giảng viên -->
+  <div class="modal" id="lecturer-modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <button type="button" class="modal__nav modal__nav--prev icon-btn icon-btn--round" id="modal-prev" aria-label="Thầy cô trước" hidden><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+    <button type="button" class="modal__nav modal__nav--next icon-btn icon-btn--round" id="modal-next" aria-label="Thầy cô kế tiếp" hidden><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-name" tabindex="-1">
+      <button type="button" class="modal__close icon-btn icon-btn--round" data-close aria-label="Đóng"><i data-lucide="x" aria-hidden="true"></i></button>
+      <div class="modal__photo" id="modal-photo"></div>
+      <div class="modal__info">
+        <p class="eyebrow" id="modal-title-line"></p>
+        <h3 id="modal-name"></h3>
+        <p class="modal__dept" id="modal-dept"></p>
+        <p class="modal__msg" id="modal-msg"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Xem ảnh gốc phóng to -->
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Xem ảnh">
+    <div class="lightbox__bar">
+      <a class="btn btn--ghost" id="lightbox-save" download><i data-lucide="download" aria-hidden="true"></i><span>Lưu ảnh</span></a>
+      <button type="button" class="icon-btn icon-btn--round" id="lightbox-close" aria-label="Đóng"><i data-lucide="x" aria-hidden="true"></i></button>
+    </div>
+    <div class="lightbox__scroll" id="lightbox-scroll"><img id="lightbox-img" alt="" /></div>
+  </div>
+
+  <!-- Cảnh Khám phá tự do -->
+  <div class="explore-bar" id="explore-bar" hidden>
+    <span><i data-lucide="orbit" aria-hidden="true"></i> Kéo để xoay · cuộn / chụm để zoom · chạm vào polaroid để xem</span>
+    <button type="button" class="btn btn--ghost" id="explore-replay"><i data-lucide="rotate-ccw" aria-hidden="true"></i><span>Xem lại trình diễn</span></button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
